@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Wishes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Dancing Script', cursive, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f7f7f7;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            background-image: url('/mnt/data/image.png'); /* Thay bằng đường dẫn tới hình nền của bạn */
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            height: 80%;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
+
+        .character {
+            width: 150px;
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+
+        .speech-bubble {
+            position: relative;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 20px;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+            width: 300px;
+            height: 150px;
+            border: 2px solid #d4af37;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-left: 200px;
+            margin-top: 50px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .speech-bubble:after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 40px;
+            width: 0;
+            height: 0;
+            border: 20px solid transparent;
+            border-top-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .fireworks {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://media.giphy.com/media/26FeVXaYBi6YVWvnS/giphy.gif') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        .candles {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            background: url('https://media.giphy.com/media/dqBS5F0vDUqk4/giphy.gif') no-repeat center center;
+            background-size: contain;
+            z-index: -1;
+        }
+
+        .glowing-text {
+            color: #d4af37;
+            text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ff7f50, 0 0 40px #ff7f50;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ff7f50, 0 0 40px #ff7f50;
+            }
+            100% {
+                text-shadow: 0 0 20px #ff7f50, 0 0 30px #ff6347, 0 0 40px #ff4500, 0 0 50px #ff4500;
+            }
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 70px;
+            background-color: #ff7f50;
+            border-radius: 50%;
+            animation: float 5s ease-in-out forwards;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            width: 2px;
+            height: 15px;
+            background-color: #333;
+            transform: translateX(-50%);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Để loại bỏ mũi tên cho text box */
+        input[type="text"] {
+            -webkit-appearance: none; /* Bỏ mũi tên trên iOS */
+            border: none; /* Bỏ viền */
+            outline: none; /* Bỏ outline */
+            padding: 10px; /* Padding cho text box */
+            font-size: 16px; /* Kích thước chữ */
+            margin: 10px; /* Để tạo khoảng cách */
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="main-container">
+        <img id="character" src="https://ih1.redbubble.net/image.983560597.0338/flat,750x,075,f-pad,750x1000,f8f8f8.jpg" alt="Lee Yongbok" class="character"> 
+        <div id="speech" class="speech-bubble glowing-text">Happy Birthday!</div>
+        <div class="fireworks"></div>
+        <div class="candles"></div>
+    </div>
+
+    <script>
+        let messages = [
+            "Happy Birthday!",
+            "May all your wishes come true!",
+            "Have a wonderful day filled with joy!"
+        ];
+
+        let currentMessageIndex = 0;
+        const characterImg = document.getElementById('character');
+        const speechBubble = document.getElementById('speech');
+
+        const characterSwitch = {
+            2: "https://static.vecteezy.com/system/resources/previews/023/485/893/non_2x/software-engineer-graphic-clipart-design-free-png.png"
+        };
+
+        function nextMessage() {
+            // Kiểm tra nếu đã đến tin nhắn cuối
+            if (currentMessageIndex < messages.length - 1) {
+                currentMessageIndex++;
+                speechBubble.innerText = messages[currentMessageIndex];
+            } else if (currentMessageIndex === messages.length - 1) {
+                // Thay đổi hình ảnh nhân vật và hiện câu cuối cùng
+                characterImg.src = characterSwitch[2];
+                speechBubble.innerText = messages[currentMessageIndex];
+            }
+
+            // Kích hoạt hoạt hình bóng bay
+            createBalloonCluster();
+        }
+
+        function createBalloonCluster() {
+            const numBalloons = Math.floor(Math.random() * 3) + 3; 
+            let delay = 0;
+
+            for (let i = 0; i < numBalloons; i++) {
+                createBalloon(delay);
+                delay += Math.random() * 1000;
+            }
+        }
+
+        function createBalloon(delay) {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.backgroundColor = getRandomColor();
+
+            balloon.style.animationDelay = `${delay}ms`;
+            document.body.appendChild(balloon);
+
+            setTimeout(() => {
+                balloon.remove();
+            }, 5000 + delay);
+        }
+
+        function getRandomColor() {
+            const colors = ['#ff7f50', '#ff6347', '#ff4500', '#ffa07a', '#ff8c00'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        document.getElementById('main-container').addEventListener('click', nextMessage);
+    </script>
+</body>
+</html>

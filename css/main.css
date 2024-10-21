@@ -1544,7 +1544,6 @@ body {
     transform: scale(0);
   }
 }
-
 @keyframes growing-grass-ans {
   0% {
     transform: scale(0);

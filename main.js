@@ -9,7 +9,6 @@ const texts = [
 const container = document.querySelector('.happy-woman-day');
 let currentTextIndex = 0; // Chỉ số cụm văn bản hiện tại
 let index = 0;
-
 function type() {
     if (index < texts[currentTextIndex].length) {
         container.innerHTML += texts[currentTextIndex].charAt(index); // Thêm từng ký tự vào div

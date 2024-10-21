@@ -1554,3 +1554,18 @@ body {
   -webkit-animation-play-state: paused !important;
   animation-play-state: paused !important;
 } /*# sourceMappingURL=main.css.map */
+.happy-woman-day {
+  color: white;
+  font-size: 30px;
+  position: fixed;
+  top: 80px;
+  overflow: hidden; /* Ẩn các ký tự không hiển thị */
+    white-space: nowrap; /* Không chuyển dòng */
+    border-right: 2px solid; /* Đường gạch ở bên phải để tạo hiệu ứng gõ chữ */
+    animation: blink 0.7s step-end infinite;
+}
+@keyframes blink {
+  50% {
+      border-color: transparent; /* Ẩn đường gạch */
+  }
+}

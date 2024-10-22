@@ -1538,7 +1538,6 @@ body {
   -webkit-animation: growing-grass-ans 1s 2s backwards;
   animation: growing-grass-ans 1s 2s backwards;
 }
-
 @-webkit-keyframes growing-grass-ans {
   0% {
     transform: scale(0);
@@ -1555,16 +1554,73 @@ body {
 } /*# sourceMappingURL=main.css.map */
 .happy-woman-day {
   color: white;
-  font-size: 30px;
+  font-size: 2vw; 
   position: fixed;
   top: 80px;
   overflow: hidden; /* Ẩn các ký tự không hiển thị */
     white-space: nowrap; /* Không chuyển dòng */
     border-right: 2px solid; /* Đường gạch ở bên phải để tạo hiệu ứng gõ chữ */
     animation: blink 0.7s step-end infinite;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal; /* Cho phép xuống dòng nếu quá dài */
+    font-size: 2vw; /* Điều chỉnh kích thước chữ linh hoạt theo kích thước màn hình */
+    text-align: center; 
 }
 @keyframes blink {
   50% {
       border-color: transparent; /* Ẩn đường gạch */
   }
 }
+/* iPhone X, iPhone 11 Pro */
+@media only screen and (max-device-width: 812px) and (orientation: portrait) {
+  .container {
+    padding: 15px;
+  }
+  .happy-woman-day {
+    font-size: 1.8rem;
+  }
+  .flowers {
+    margin: 10px 0;
+  }
+}
+
+/* iPhone 12, iPhone 13, iPhone 14 */
+@media only screen and (max-device-width: 844px) and (orientation: portrait) {
+  .container {
+    padding: 20px;
+  }
+  .happy-woman-day {
+    font-size: 2rem;
+  }
+  .flowers {
+    margin: 20px 0;
+  }
+}
+
+/* iPhone 14 Pro Max, iPhone 15, iPhone 16 */
+@media only screen and (max-device-width: 926px) and (orientation: portrait) {
+  .container {
+    padding: 25px;
+  }
+  .happy-woman-day {
+    font-size: 2.2rem;
+  }
+  .flowers {
+    margin: 30px 0;
+  }
+}
+
+/* Landscape Mode for iPhones */
+@media only screen and (max-device-width: 926px) and (orientation: landscape) {
+  .container {
+    padding: 10px;
+  }
+  .happy-woman-day {
+    font-size: 1.6rem;
+  }
+  .flowers {
+    margin: 10px 0;
+  }
+}
+

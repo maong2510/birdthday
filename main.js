@@ -2,14 +2,14 @@ onload = () => {
   document.body.classList.remove("container"); 
 };
 
-document.addEventListener('DOMContentLoaded', function() {
+document.body.addEventListener('click', function() {
     var audio = document.getElementById('birthday-music');
-    audio.play().catch(function(error) {
+    audio.play().then(() => {
+        console.log('Audio is playing');
+    }).catch((error) => {
         console.log('Audio play failed:', error);
     });
 });
-
-
 
 const texts = [
   "𝓗𝓪𝓹𝓹𝔂 𝓫𝓲𝓻𝓽𝓱𝓭𝓪𝔂, 𝓜𝓪𝔂 𝓪𝓵𝓵 𝔂𝓸𝓾𝓻 𝔀𝓲𝓼𝓱𝓮𝓼 𝓬𝓸𝓶𝓮 𝓽𝓻𝓾𝓮!",

@@ -1,6 +1,16 @@
 onload = () => {
-  document.body.classList.remove("container");
+  document.body.classList.remove("container"); 
 };
+
+document.addEventListener('DOMContentLoaded', function() {
+    var audio = document.getElementById('birthday-music');
+    audio.play().catch(function(error) {
+        console.log('Audio play failed:', error);
+    });
+});
+
+
+
 const texts = [
   "𝓗𝓪𝓹𝓹𝔂 𝓫𝓲𝓻𝓽𝓱𝓭𝓪𝔂, 𝓜𝓪𝔂 𝓪𝓵𝓵 𝔂𝓸𝓾𝓻 𝔀𝓲𝓼𝓱𝓮𝓼 𝓬𝓸𝓶𝓮 𝓽𝓻𝓾𝓮!",
   "𝓗𝓪𝓿𝓮 𝓪 𝔀𝓸𝓷𝓭𝓮𝓻𝓯𝓾𝓵 𝓭𝓪𝔂 𝓯𝓲𝓵𝓵𝓮𝓭 𝔀𝓲𝓽𝓱 𝓳𝓸𝔂!"
